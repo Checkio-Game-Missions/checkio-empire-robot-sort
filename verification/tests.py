@@ -8,29 +8,83 @@ Each test is dict with
 """
 
 
+def swapsort(array):
+    return ""
+
+
+if __name__ == '__main__':
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    assert swapsort((6, 4, 2)) == "01,12,01", "Reverse simple"
+    assert swapsort((1, 2, 3, 4, 5)) == "", "All right!"
+    assert swapsort((1, 2, 3, 5, 3)) == "54", "One move"
+
 TESTS = {
     "Basics": [
         {
-            "input": [3, 2],
-            "answer": 5,
-            "explanation": "3+2=?"
+            "input": (6, 4, 2),
+            "answer": (6, 4, 2),
         },
         {
-            "input": [5, 7],
-            "answer": 12,
-            "explanation": "5+7=?"
-        }
+            "input": (1, 2, 3, 4, 5),
+            "answer": (1, 2, 3, 4, 5),
+        },
+        {
+            "input": (1, 2, 3, 5, 3),
+            "answer": (1, 2, 3, 5, 3),
+        },
+
+    ],
+    "Edge": [
+        {
+            "input": [1],
+            "answer": [1],
+        },
+        {
+            "input": [1, 2, 3, 4, 5, 6, 7, 8, 9, 9],
+            "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 9],
+        },
+        {
+            "input": [1, 2, 3, 4, 5, 6, 7, 8, 9, 9],
+            "answer": [1, 2, 3, 4, 5, 6, 7, 8, 9, 1],
+        },
+        {
+            "input": [9, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            "answer": [9, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        },
     ],
     "Extra": [
         {
-            "input": [6, 3],
-            "answer": 9,
-            "explanation": "6+3=?"
+            "input": [4, 6, 5, 2, 6, 1],
+            "answer": [4, 6, 5, 2, 6, 1]
         },
         {
-            "input": [6, 7],
-            "answer": 13,
-            "explanation": "6+7=?"
-        }
+            "input": [3, 2, 7, 2, 3, 7, 9, 6, 9],
+            "answer": [3, 2, 7, 2, 3, 7, 9, 6, 9]
+        },
+        {
+            "input": [5, 8, 5, 3, 7, 8, 1, 5, 1, 4],
+            "answer": [5, 8, 5, 3, 7, 8, 1, 5, 1, 4]
+        },
+        {
+            "input": [7, 1, 3, 8, 5, 9, 7],
+            "answer": [7, 1, 3, 8, 5, 9, 7]
+        },
+        {
+            "input": [1, 8, 7, 9, 6, 4],
+            "answer": [1, 8, 7, 9, 6, 4]
+        },
+        {
+            "input": [3, 7, 7, 6, 7, 1, 3, 3, 4, 9],
+            "answer": [3, 7, 7, 6, 7, 1, 3, 3, 4, 9]
+        },
+        {
+            "input": [3, 5, 3],
+            "answer": [3, 5, 3]
+        },
+        {
+            "input": [1, 7, 2, 4, 7, 9, 2, 9, 7, 3],
+            "answer": [1, 7, 2, 4, 7, 9, 2, 9, 7, 3]
+        },
     ]
+
 }
