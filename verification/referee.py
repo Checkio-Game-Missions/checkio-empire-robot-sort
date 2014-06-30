@@ -42,11 +42,11 @@ def swap(array, i, j):
     array[i], array[j] = array[j], array[i]
 
 def checker(indata, result):
-    array = indata[:]
+    array = list(indata[:])
     la = len(array)
     if not isinstance(result, str):
         return False, (False, "The result should be a string")
-    actions = result.split(",")
+    actions = result.split(",") if result else []
     for act in actions:
         if len(act) != 2 or not act.isdigit():
             return False, (False, "The wrong action: {}".format(act))
@@ -56,6 +56,8 @@ def checker(indata, result):
         swap(array, i, j)
     if len(actions) > (la * (la - 1)) // 2:
         return False, (True, "Too many actions. BOOM!")
+    print("============")
+    print(array, indata)
     if array != sorted(indata):
         return False, (True, "The array is not sorted. BOOM!")
     return True, (True, "Great!")

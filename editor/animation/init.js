@@ -40,10 +40,11 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             }
 
             //YOUR FUNCTION NAME
-            var fname = 'checkio';
+            var fname = 'swapsort';
 
             var checkioInput = data.in;
-            var checkioInputStr = ' ' + fname + '(' + JSON.stringify(checkioInput)  + ')';
+
+            var checkioInputStr = fname + '(' + JSON.stringify(checkioInput).replace("[", "(").replace("]", ",)")  + ')';
 
             var failError = function(dError) {
                 $content.find('.call').html('Fail: ' + checkioInputStr);
@@ -70,6 +71,8 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             var userResult = data.out;
             var result = data.ext["result"];
             var result_addon = data.ext["result_addon"];
+            var result_show = result_addon[0];
+            var result_message = result_addon[1];
 
 
             //if you need additional info from tests (if exists)
@@ -79,7 +82,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 
             if (!result) {
                 $content.find('.call').html('Fail: ' + checkioInputStr);
-                $content.find('.answer').html('Right result:&nbsp;' + JSON.stringify(rightResult));
+                $content.find('.answer').html(result_message);
                 $content.find('.answer').addClass('error');
                 $content.find('.output').addClass('error');
                 $content.find('.call').addClass('error');

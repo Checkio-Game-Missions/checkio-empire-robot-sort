@@ -5,4 +5,4 @@ if __name__ == '__main__':
     #These "asserts" using only for self-checking and not necessary for auto-testing
     assert swapsort((6, 4, 2)) == "01,12,01", "Reverse simple"
     assert swapsort((1, 2, 3, 4, 5)) == "", "All right!"
-    assert swapsort((1, 2, 3, 5, 3)) == "54", "One move"
+    assert swapsort((1, 2, 3, 5, 3)) == "43", "One move"
