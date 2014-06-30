@@ -1,49 +1,60 @@
 <p>
-    The spaceship reactors contains several energy nuclear rods.
+    The spaceship reactors contains several (no more than ten) energy nuclear rods.
     These rods should be sorted by size for stable reactor working.
     But as usual the stupid reactor serving machine had placed all nuclear rods without any order and started the engine.
     Now Stephan have to reorder all rods.
-    Because the reactor is working already he can only quick swap neighbour rods.
+    Because the reactor is working already he can only quick swap neighbour rods or BOOM!
 </p>
 
 <p>
     You are given sizes and the initial order of rods as an array of numbers. Indexes are position, values are sizes.
     You should order this array from the lowest to the biggest sizes.
 </p>
+<p>
+    For each action Stephan can swap only two neighbour elements.
+    Each action should be represented as a string with two digits -
+    indexes of the swapping elements (ex, "01" - swap 0th and 1st rods).
+    The result should be represented as a string that contains the sequence of actions separated by commas.
+    If the array is not required to be sorted, then return an empty string.
+</p>
+<p>
+    And you can swap only <strong>N*(N-1)/2</strong> times, where N - is a quantity of rods.
+</p>
 
 <p style="text-align: center;">
-    <img class="for_info_only" title="example" src="{{MEDIA}}example.png" alt="example" width="392px"/>
-    <img class="for_editor_only" title="example" src="{{MEDIA}}example.png" alt="example" width="380px"/>
-</p>
-
-<p><i>( Explain input and output values )</i></p>
-<p>
-    <strong>Input: </strong> Two arguments. Both are int
+    <img class="for_info_only" title="actions" src="{{MEDIA}}actions.png" alt="actions" width="600px"/>
+    <img class="for_editor_only" title="actions" src="{{MEDIA}}actions.png" alt="actions" width="380px"/>
 </p>
 
 <p>
-    <strong>Output: </strong> Int. 
+    <strong>Input: </strong> An array as a tuple of integers.
+</p>
+
+<p>
+    <strong>Output: </strong> The sequence of actions as a string.
 </p>
 
 
 
 <div class="for_info_only">
-    <p><i>( Put some usage examples )</i></p>
     <p>
         <strong>Example:</strong>
     </p>
     <pre class="brush: python">
-checkio(3, 2) == 5
-checkio(5, 7) == 12
+robosort((6, 4, 2)) == "01,12,01"
+robosort((1, 2, 3, 4, 5)) == ""
+robosort((1, 2, 3, 5, 3)) == "54"
     </pre>
 </div>
 
 <p class="for_info_only">
     <strong>How it is used: </strong>
-    <i>(Here you can explain how it can be used in development and what is usage of this.)</i>
+    This mission will show you how to work the simplest sorting algorithms.
+    And this can be useful, if you need to build a production line for your factory.
 </p>
 
 <p>
-    <strong>Precondition:</strong>
-    <i>Constraints for Input</i>
+    <strong>Precondition:</strong><br>
+    1 &le; len(<strong>array</strong>) &le; 10<br>
+    all(1 &le; n &lt; 10 for n in <strong>array</strong>)
 </p>
