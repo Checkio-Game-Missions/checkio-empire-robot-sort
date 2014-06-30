@@ -34,16 +34,42 @@ from checkio.referees import checkers
 
 from tests import TESTS
 
+cover = """def cover(f, data):
+    return f(tuple(data))
+"""
+
+def swap(array, i, j):
+    array[i], array[j] = array[j], array[i]
+
+def checker(indata, result):
+    array = indata[:]
+    la = len(array)
+    if not isinstance(result, str):
+        return False, (False, "The result should be a string")
+    actions = result.split(",")
+    for act in actions:
+        if len(act) != 2 or not act.isdigit():
+            return False, (False, "The wrong action: {}".format(act))
+        i, j = int(act[0]), int(act[1])
+        if i >= la or j >= la:
+            return False, (False, "Index error: {}".format(act))
+        swap(array, i, j)
+    if len(actions) > (la * (la - 1)) // 2:
+        return False, (True, "Too many actions. BOOM!")
+    if array != sorted(indata):
+        return False, (True, "The array is not sorted. BOOM!")
+    return True, (True, "Great!")
+
+
+
 api.add_listener(
     ON_CONNECT,
     CheckiOReferee(
         tests=TESTS,
         cover_code={
-            'python-27': cover_codes.unwrap_args,  # or None
-            'python-3': cover_codes.unwrap_args
+            'python-27': cover,
+            'python-3': cover
         },
-        # checker=None,  # checkers.float.comparison(2)
-        # add_allowed_modules=[],
-        # add_close_builtins=[],
-        # remove_allowed_modules=[]
+        checker=checker,
+        function_name="swapsort"
     ).on_ready)
