@@ -1,21 +1,21 @@
 <p>
-    The spaceship reactors contains several (no more than ten) energy nuclear rods.
-    These rods should be sorted by size for stable reactor working.
-    But as usual the stupid reactor serving machine had placed all nuclear rods without any order and started the engine.
-    Now Stephan have to reorder all rods.
-    Because the reactor is working already he can only quick swap neighbour rods or BOOM!
+    The spaceship reactors contains several (no more than ten) nuclear fuel rods.
+    These rods should be sorted by size to ensure the reactor’s stability,
+    but as usual the fuel rod loading mechanism malfunctioned and inserted the rods at random,
+    then started the ships engine. Now Stephan has to reload the rods all over again.
+    Because the reactor is already running, he needs to quickly swap neighbouring rods or else the whole thing goes BOOM!
 </p>
 
 <p>
-    You are given sizes and the initial order of rods as an array of numbers. Indexes are position, values are sizes.
-    You should order this array from the lowest to the biggest sizes.
+    You are given the sizes and initial order of the rods as an array of numbers. Indexes are position, values are sizes.
+    You should order this array from the smallest to the largest in size.
 </p>
 <p>
-    For each action Stephan can swap only two neighbour elements.
-    Each action should be represented as a string with two digits -
-    indexes of the swapping elements (ex, "01" - swap 0th and 1st rods).
+    For each action Stephan can swap only two neighbouring elements.
+    Each action should be represented as a string with two digits - indexes of the swapped elements
+    (ex, "01" - swap 0th and 1st rods).
     The result should be represented as a string that contains the sequence of actions separated by commas.
-    If the array is not required to be sorted, then return an empty string.
+    If the array does not require sorting, then return an empty string.
 </p>
 <p>
     And you can swap only <strong>N*(N-1)/2</strong> times, where N - is a quantity of rods.
