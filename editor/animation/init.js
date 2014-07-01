@@ -44,9 +44,9 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 
             var checkioInput = data.in;
 
-            var checkioInputStr = fname + '(' + JSON.stringify(checkioInput).replace("[", "(").replace("]", ",)")  + ')';
+            var checkioInputStr = fname + '(' + JSON.stringify(checkioInput).replace("[", "(").replace("]", ",)") + ')';
 
-            var failError = function(dError) {
+            var failError = function (dError) {
                 $content.find('.call').html('Fail: ' + checkioInputStr);
                 $content.find('.output').html(dError.replace(/\n/g, ","));
 
@@ -92,13 +92,11 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                 $content.find('.answer').remove();
             }
 
-            //Your code here about test explanation animation
-            //$content.find(".explanation").html("Something text for example");
-            //
-            //
-            //
-            //
-            //
+            var canvas = new SwapSort();
+            canvas.draw($content.find(".explanation")[0], checkioInput);
+            if (result_show) {
+                canvas.play(userResult);
+            }
 
 
             this_e.setAnimationHeight($content.height() + 60);
@@ -119,22 +117,89 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 //            });
 //        });
 
-        var colorOrange4 = "#F0801A";
-        var colorOrange3 = "#FA8F00";
-        var colorOrange2 = "#FAA600";
-        var colorOrange1 = "#FABA00";
+        var SwapSort = function (options) {
+            options = options || {};
 
-        var colorBlue4 = "#294270";
-        var colorBlue3 = "#006CA9";
-        var colorBlue2 = "#65A1CF";
-        var colorBlue1 = "#8FC7ED";
+            var colorOrange4 = "#F0801A";
+            var colorOrange3 = "#FA8F00";
+            var colorOrange2 = "#FAA600";
+            var colorOrange1 = "#FABA00";
 
-        var colorGrey4 = "#737370";
-        var colorGrey3 = "#9D9E9E";
-        var colorGrey2 = "#C5C6C6";
-        var colorGrey1 = "#EBEDED";
+            var colorBlue4 = "#294270";
+            var colorBlue3 = "#006CA9";
+            var colorBlue2 = "#65A1CF";
+            var colorBlue1 = "#8FC7ED";
 
-        var colorWhite = "#FFFFFF";
+            var colorGrey4 = "#737370";
+            var colorGrey3 = "#9D9E9E";
+            var colorGrey2 = "#C5C6C6";
+            var colorGrey1 = "#EBEDED";
+
+            var colorWhite = "#FFFFFF";
+
+            var padding = 10;
+            var w = 20;
+            var unit = 30;
+
+            var paper;
+            var sizeX, sizeY;
+            var rods = [];
+            var sorted;
+            var ar;
+
+            var attrRod = {"stroke-width": 0};
+            var attrNumb = {"stroke": colorBlue4, "font-family": "Robotic, Verdana, Geneva, sans-serif", "font-size": w};
+
+
+            this.draw = function(dom, data) {
+                ar = data.slice();
+                sorted = data.slice();
+                sorted.sort();
+                sizeX = data.length * (padding + w);
+                sizeY = Math.max.apply(Math.max, data) * unit;
+                var centerY = sizeY / 2;
+                paper = Raphael(dom, sizeX, sizeY);
+                for (var i = 0; i < data.length; i++) {
+                    var el = paper.set();
+                    el.push(paper.rect(padding * (i + 0.5) + w * i, centerY - data[i] * unit / 2, w, data[i] * unit, unit / 4).attr(
+                        attrRod).attr("fill", data[i] === sorted[i] ? colorBlue2 : colorOrange2));
+                    el.push(paper.text((padding + w) * (i + 0.5), centerY, data[i]).attr(attrNumb));
+                    rods.push(el);
+                }
+            };
+
+            this.play = function(result) {
+                var actions = result.split(",");
+                if (actions.length === 1 && actions[0] === '') {
+                    return false;
+                }
+                var i = 0;
+                var timeStep = 500;
+                (function swap() {
+                    if (i >= actions.length) {
+                        return false;
+                    }
+                    var act = actions[i];
+                    var f = Number(act[0]);
+                    var s = Number(act[1]);
+                    i++;
+                    var temp = ar[f];
+                    ar[f] = ar[s];
+                    ar[s] = temp;
+                    temp = rods[f];
+                    rods[f] = rods[s];
+                    rods[s] = temp;
+
+                    rods[s].animate({"transform": "...t" + ((s - f) * unit) + ",0"}, timeStep);
+                    rods[s][0].animate({"fill": sorted[s] === ar[s] ? colorBlue2 : colorOrange2}, timeStep);
+                    rods[f].animate({"transform": "...t" + ((f - s) * unit) + ",0"}, timeStep);
+                    rods[f][0].animate({"fill": sorted[f] === ar[f] ? colorBlue2 : colorOrange2}, timeStep, callback=swap);
+
+                })();
+            }
+
+        };
+
         //Your Additional functions or objects inside scope
         //
         //

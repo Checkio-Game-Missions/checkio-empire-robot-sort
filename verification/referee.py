@@ -53,11 +53,11 @@ def checker(indata, result):
         i, j = int(act[0]), int(act[1])
         if i >= la or j >= la:
             return False, (False, "Index error: {}".format(act))
+        if abs(i - j) != 1:
+            return False, (False, "The wrong action: {}".format(act))
         swap(array, i, j)
     if len(actions) > (la * (la - 1)) // 2:
         return False, (True, "Too many actions. BOOM!")
-    print("============")
-    print(array, indata)
     if array != sorted(indata):
         return False, (True, "The array is not sorted. BOOM!")
     return True, (True, "Great!")

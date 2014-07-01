@@ -7,17 +7,6 @@ Each test is dict with
     "explanation" -- not necessary key, it's using for additional info in animation.
 """
 
-
-def swapsort(array):
-    return ""
-
-
-if __name__ == '__main__':
-    #These "asserts" using only for self-checking and not necessary for auto-testing
-    assert swapsort((6, 4, 2)) == "01,12,01", "Reverse simple"
-    assert swapsort((1, 2, 3, 4, 5)) == "", "All right!"
-    assert swapsort((1, 2, 3, 5, 3)) == "54", "One move"
-
 TESTS = {
     "Basics": [
         {
