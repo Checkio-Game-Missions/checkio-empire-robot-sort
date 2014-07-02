@@ -29,6 +29,10 @@ TESTS = {
             "answer": [1],
         },
         {
+            "input": [2],
+            "answer": [2],
+        },
+        {
             "input": [1, 3],
             "answer": [1, 3],
         },
