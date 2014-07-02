@@ -29,8 +29,8 @@ TESTS = {
             "answer": [1],
         },
         {
-            "input": [2],
-            "answer": [2],
+            "input": [7],
+            "answer": [7],
         },
         {
             "input": [1, 3],
