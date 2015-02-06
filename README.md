@@ -1,4 +1,4 @@
-checkio-mission-robot-sorting
+robot-sorting
 =====================
 
-Checkio Mission "Robot Sorting"
+Mine 1.4 "Robot Sorting"
