@@ -1,4 +1,4 @@
-def swapsort(array):
+def swap_sort(array):
     return ""
 
 
@@ -32,6 +32,6 @@ if __name__ == '__main__':
             return False
         return True
 
-    assert check_solution(swapsort, (6, 4, 2)), "Reverse simple"
-    assert check_solution(swapsort, (1, 2, 3, 4, 5)), "All right!"
-    assert check_solution(swapsort, (1, 2, 3, 5, 3)), "One move"
+    assert check_solution(swap_sort, (6, 4, 2)), "Reverse simple"
+    assert check_solution(swap_sort, (1, 2, 3, 4, 5)), "All right!"
+    assert check_solution(swap_sort, (1, 2, 3, 5, 3)), "One move"
