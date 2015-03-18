@@ -1,5 +1,3 @@
-import logging
-from tornado import gen
 from checkio_referee import RefereeBase
 from checkio_referee import covercodes, validators, representations
 
@@ -45,21 +43,11 @@ class Referee(RefereeBase):
     VALIDATOR = SwapSortValidator
     FUNCTION_NAME = "swap_sort"
     CALLED_REPRESENTATIONS = {
-        "python_3": representations.py_tuple_representation
+        "python_3": representations.py_tuple_representation,
+        "python_2": representations.py_tuple_representation
     }
     ENV_COVERCODE = {
         "python_3": covercodes.py_tuple,
         "python_2": covercodes.py_tuple,
         "javascript": None,
     }
-
-    @gen.coroutine
-    def post_test(self, test, validator_result, **kwargs):
-        logging.info("POST_TEST:: check result for category {0}, test {1}: {2}".format(
-            kwargs.get("category_name", ""),
-            kwargs.get("test_number", 0),
-            validator_result.test_passed))
-        logging.info(kwargs)
-        if validator_result.additional_data:
-            logging.info("VALIDATOR:: Data: {}".format(validator_result.additional_data))
-            # TODO: Send data to Editor
