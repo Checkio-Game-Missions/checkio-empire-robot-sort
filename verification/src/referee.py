@@ -1,7 +1,7 @@
 from checkio_referee import RefereeBase
 from checkio_referee import covercodes, validators, representations
 
-import settings
+
 import settings_env
 from tests import TESTS
 
