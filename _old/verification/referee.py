@@ -73,5 +73,5 @@ api.add_listener(
             'python-3': cover
         },
         checker=checker,
-        function_name="swapsort"
+        DEFAULT_FUNCTION_NAME="swapsort"
     ).on_ready)

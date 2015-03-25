@@ -38,10 +38,10 @@ class SwapSortValidator(validators.BaseValidator):
 
 class Referee(RefereeBase):
     TESTS = TESTS
-    EXECUTABLE_PATH = settings.EXECUTABLE_PATH
-    CURRENT_ENV = settings_env.CURRENT_ENV
+    ENVIRONMENTS = settings_env.ENVIRONMENTS
+
     VALIDATOR = SwapSortValidator
-    FUNCTION_NAME = "swap_sort"
+    DEFAULT_FUNCTION_NAME = "swap_sort"
     CALLED_REPRESENTATIONS = {
         "python_3": representations.py_tuple_representation,
         "python_2": representations.py_tuple_representation
