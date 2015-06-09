@@ -11,4 +11,20 @@ If the array does not require sorting, then return an empty string.
 
 And you can swap only **N\*(N-1)/2** times, where N - is a quantity of ingots.
 
-![Actions](actions.svg)
+```
+Initial   6 ============
+position  4   ======== 
+          2     ====
+
+Swap      4   ========
+0 - 1     6 ============ 
+          2     ====
+          
+Swap      4   ========
+1 - 2     2     ==== 
+          6 ============
+          
+Swap      2     ====
+0 - 1     4   ======== 
+          6 ============
+```
