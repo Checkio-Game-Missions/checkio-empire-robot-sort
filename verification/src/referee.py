@@ -1,5 +1,5 @@
 from checkio_referee import RefereeBase
-from checkio_referee import covercodes, validators, representations
+from checkio_referee import covercodes, validators, representations, ENV_NAME
 
 
 import settings_env
@@ -42,12 +42,12 @@ class Referee(RefereeBase):
 
     VALIDATOR = SwapSortValidator
     DEFAULT_FUNCTION_NAME = "swap_sort"
+    FUNCTION_NAMES = {
+        ENV_NAME.JS_NODE: "swapSort"
+    }
     CALLED_REPRESENTATIONS = {
-        "python_3": representations.py_tuple_representation,
-        "python_2": representations.py_tuple_representation
+        ENV_NAME.PYTHON: representations.py_tuple_representation,
     }
     ENV_COVERCODE = {
-        "python_3": covercodes.py_tuple,
-        "python_2": covercodes.py_tuple,
-        "javascript": None,
+        ENV_NAME.PYTHON: covercodes.py_tuple,
     }
