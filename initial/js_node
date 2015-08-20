@@ -18,6 +18,7 @@ if (!global.is_checking) {
             console.log("The result should be a string");
             return false;
         }
+
         var actions = result.length ? result.split(",") : [];
         for (var a = 0; a < actions.length; a++) {
             var act = actions[a];
@@ -55,4 +56,5 @@ if (!global.is_checking) {
     assert(checkSolution(swapSort, [6, 4, 2]), "Reverse simple");
     assert(checkSolution(swapSort, [1, 2, 3, 4, 5]), "All right!");
     assert(checkSolution(swapSort, [1, 2, 3, 5, 3]), "One move");
+    console.log("All set? Click 'Check' to review your code and earn rewards!");
 }
