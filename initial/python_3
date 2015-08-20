@@ -35,3 +35,5 @@ if __name__ == '__main__':
     assert check_solution(swap_sort, (6, 4, 2)), "Reverse simple"
     assert check_solution(swap_sort, (1, 2, 3, 4, 5)), "All right!"
     assert check_solution(swap_sort, (1, 2, 3, 5, 3)), "One move"
+
+    print("Earn cool rewards by using the 'Check' button!")
